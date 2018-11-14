@@ -10,6 +10,10 @@ class HomePresenter(private val homeView: HomeContract) {
     @Inject
     lateinit var gitHubService: GitHubService
 
+    init {
+        homeView.initializeViews()
+    }
+
     fun fetchAndSetUserData(userID: String) {
         homeView.searchPerforming()
         gitHubService.getUser(userID)

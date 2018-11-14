@@ -6,4 +6,5 @@ interface HomeContract {
     fun setBioAndLocation(bio: String, location: String)
     fun searchPerforming()
     fun searchCompleted()
+    fun initializeViews()
 }

@@ -45,6 +45,14 @@ class HomeActivity : AppCompatActivity(), HomeContract {
         searchButton.isEnabled = true
     }
 
+    override fun initializeViews() {
+        searchButton = findViewById(R.id.searchUserButton)
+        userIdInput = findViewById(R.id.userIdField)
+        profileName = findViewById(R.id.profileName)
+        profileLocation = findViewById(R.id.profileLocation)
+        profileBio = findViewById(R.id.profileBio)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -56,11 +64,6 @@ class HomeActivity : AppCompatActivity(), HomeContract {
         homePresenter = HomePresenter(this)
         networkComponent.inject(homePresenter)
 
-        searchButton = findViewById(R.id.searchUserButton)
-        userIdInput = findViewById(R.id.userIdField)
-        profileName = findViewById(R.id.profileName)
-        profileLocation = findViewById(R.id.profileLocation)
-        profileBio = findViewById(R.id.profileBio)
         listenToSearchButton()
     }
 
