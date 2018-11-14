@@ -1,5 +1,6 @@
 package android.opstech.gojek.githubuserview.Dagger
 
+import android.opstech.gojek.githubuserview.AppConstants
 import android.opstech.gojek.githubuserview.RetrofitApiPaths.GitHubService
 import dagger.Module
 import dagger.Provides
@@ -10,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-class NetworkModule(val baseUrl: String) {
+class NetworkModule {
 
     @Provides
     fun providesOkHttpClient(): OkHttpClient {
@@ -25,7 +26,7 @@ class NetworkModule(val baseUrl: String) {
     @Provides
     fun providesRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-                .baseUrl(baseUrl)
+                .baseUrl(AppConstants.baserUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)

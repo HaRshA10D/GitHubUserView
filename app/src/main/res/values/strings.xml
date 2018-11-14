@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GithubUserView</string>
+    <string name="github_user_profile_image">GitHub user profile image</string>
 </resources>
