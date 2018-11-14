@@ -2,9 +2,10 @@
 A android application to view github user profile and explore repos.
 
 #### Dev environment
-The repo uses gradle for dependencies, please add the following lines to include the libraries in `build.gradle` file in app folder.
+The repo uses gradle for dependencies, please add the following lines to include the libraries in `build.gradle` file in app folder. 
+We used dagger for dependency injection, retrofit for Api calls and RxJava for running network calls asynchronously.
 * Android studio `3.1.4`
-* Dagger `2.13`
+* Dagger `2.13` 
 ```
 implementation 'com.google.dagger:dagger:2.13'
 annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
@@ -31,8 +32,9 @@ implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 ```
 
 #### Install Instruction
+To build the app and generate apk:
 ```
-$ ./gradlew installDebug
+rootfolder$ ./gradlew installDebug
 ```
 
 #### Author
