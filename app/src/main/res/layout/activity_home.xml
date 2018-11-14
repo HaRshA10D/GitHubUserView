@@ -51,7 +51,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/profileLocation"
+                android:id="@+id/profileBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -59,12 +59,13 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/profileBio"
+                android:id="@+id/profileLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:textSize="16sp" />
+
 
         </LinearLayout>
 
