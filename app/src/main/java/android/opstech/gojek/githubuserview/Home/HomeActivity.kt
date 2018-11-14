@@ -20,7 +20,6 @@ class HomeActivity : AppCompatActivity(), HomeContract {
     override fun setProfilePic(imageUrl: String) {
         userImage = findViewById(R.id.userProfileImage)
         Glide.with(userImage).load(imageUrl).into(userImage)
-        searchButton.text = getString(R.string.search)
     }
 
     override fun setProfileName(name: String) {
@@ -29,6 +28,16 @@ class HomeActivity : AppCompatActivity(), HomeContract {
 
     override fun setBioAndLocation(bio: String, location: String) {
 
+    }
+
+    override fun searchPerforming() {
+        searchButton.text = getString(R.string.loading_string)
+        searchButton.isEnabled = false
+    }
+
+    override fun searchCompleted() {
+        searchButton.text = getString(R.string.search)
+        searchButton.isEnabled = true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +58,6 @@ class HomeActivity : AppCompatActivity(), HomeContract {
 
     private fun listenToSearchButton() {
         searchButton.setOnClickListener {
-            searchButton.text = getString(R.string.loading_string)
             homePresenter.fetchAndSetUserData(userIdInput.text.toString())
         }
     }

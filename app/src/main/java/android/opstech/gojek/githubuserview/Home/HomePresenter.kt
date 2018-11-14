@@ -11,12 +11,14 @@ class HomePresenter(private val homeView: HomeContract) {
     lateinit var gitHubService: GitHubService
 
     fun fetchAndSetUserData(userID: String) {
+        homeView.searchPerforming()
         gitHubService.getUser(userID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     if (it.body() != null) {
                         homeView.setProfilePic(it.body()!!.avatarURL)
+                        homeView.searchCompleted()
                     }
                 }, {
 
