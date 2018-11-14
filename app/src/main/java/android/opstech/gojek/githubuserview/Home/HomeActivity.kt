@@ -5,13 +5,22 @@ import android.opstech.gojek.githubuserview.Dagger.NetworkModule
 import android.opstech.gojek.githubuserview.R
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 
 class HomeActivity : AppCompatActivity(), HomeContract {
+
+    private lateinit var userImage: ImageView
+    private lateinit var searchButton: Button
+    private lateinit var userIdInput: EditText
+    private lateinit var homePresenter: HomePresenter
+
     override fun setProfilePic(imageUrl: String) {
-        val userImage = findViewById<ImageView>(R.id.userProfileImage)
+        userImage = findViewById(R.id.userProfileImage)
         Glide.with(userImage).load(imageUrl).into(userImage)
+        searchButton.text = getString(R.string.search)
     }
 
     override fun setProfileName(name: String) {
@@ -30,9 +39,18 @@ class HomeActivity : AppCompatActivity(), HomeContract {
                 .networkModule(NetworkModule())
                 .build()
 
-        val homePresenter = HomePresenter(this)
+        homePresenter = HomePresenter(this)
         networkComponent.inject(homePresenter)
 
-        homePresenter.fetchAndSetUserData("harsha10d")
+        searchButton = findViewById(R.id.searchUserButton)
+        userIdInput = findViewById(R.id.userIdField)
+        listenToSearchButton()
+    }
+
+    private fun listenToSearchButton() {
+        searchButton.setOnClickListener {
+            searchButton.text = getString(R.string.loading_string)
+            homePresenter.fetchAndSetUserData(userIdInput.text.toString())
+        }
     }
 }
