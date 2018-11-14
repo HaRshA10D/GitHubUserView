@@ -15,19 +15,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/userProfileImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/github_user_profile_image"
-                android:scaleType="fitCenter" />
-
             <EditText
                 android:id="@+id/userIdField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_margin="10dp"
                 android:hint="@string/enter_github_user_id"
                 android:inputType="text" />
 
@@ -37,6 +29,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/search" />
+
+            <ImageView
+                android:id="@+id/userProfileImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="30dp"
+                android:contentDescription="@string/github_user_profile_image"
+                android:scaleType="fitCenter" />
 
         </LinearLayout>
 
