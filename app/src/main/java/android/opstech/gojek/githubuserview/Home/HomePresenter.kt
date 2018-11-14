@@ -18,6 +18,10 @@ class HomePresenter(private val homeView: HomeContract) {
                 .subscribe({
                     if (it.body() != null) {
                         homeView.setProfilePic(it.body()!!.avatarURL)
+                        homeView.setProfileName(it.body()!!.userName)
+                        if (it.body()?.bio != null && it.body()?.location != null) {
+                            homeView.setBioAndLocation(it.body()!!.bio, it.body()!!.location)
+                        }
                         homeView.searchCompleted()
                     }
                 }, {

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import com.bumptech.glide.Glide
 
 class HomeActivity : AppCompatActivity(), HomeContract {
@@ -15,6 +16,9 @@ class HomeActivity : AppCompatActivity(), HomeContract {
     private lateinit var userImage: ImageView
     private lateinit var searchButton: Button
     private lateinit var userIdInput: EditText
+    private lateinit var profileName: TextView
+    private lateinit var profileLocation: TextView
+    private lateinit var profileBio: TextView
     private lateinit var homePresenter: HomePresenter
 
     override fun setProfilePic(imageUrl: String) {
@@ -23,11 +27,12 @@ class HomeActivity : AppCompatActivity(), HomeContract {
     }
 
     override fun setProfileName(name: String) {
-
+        profileName.text = name
     }
 
     override fun setBioAndLocation(bio: String, location: String) {
-
+        profileBio.text = bio
+        profileLocation.text = location
     }
 
     override fun searchPerforming() {
@@ -53,6 +58,9 @@ class HomeActivity : AppCompatActivity(), HomeContract {
 
         searchButton = findViewById(R.id.searchUserButton)
         userIdInput = findViewById(R.id.userIdField)
+        profileName = findViewById(R.id.profileName)
+        profileLocation = findViewById(R.id.profileLocation)
+        profileBio = findViewById(R.id.profileBio)
         listenToSearchButton()
     }
 
